@@ -73,7 +73,7 @@ class CustomRow extends React.Component {
             <select className="prog" name="prog">
             {this.state.programas.map(programa => (
                 <option key={programa.id} value={programa.id}>
-                  {programa.siglaPrograma}
+                  {programa.nombrePrograma}
                 </option>
               ))}
             </select>
