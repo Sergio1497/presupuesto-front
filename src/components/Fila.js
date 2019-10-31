@@ -34,7 +34,7 @@ class CustomRow extends React.Component {
     .then(ga =>{
       this.setState({ semestres: ga })
     });
-    fetch("https://registropresupuesto.herokuapp.com/cursos")
+    fetch("https://registropresupuesto.herokuapp.com/programas/{id}/cursos")
     .then(response => response.json())
     .then(ga =>{
       this.setState({ cursos: ga })
