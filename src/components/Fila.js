@@ -21,7 +21,6 @@ class CustomRow extends React.Component {
     this.setState({
       id_programa_selec: e.target.value
     });
-    console.log(e.target.value);
   }
 
   componentDidUpdate(prevState){
