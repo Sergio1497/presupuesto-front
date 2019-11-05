@@ -9,14 +9,21 @@ class CustomRow extends React.Component {
    // defaultValueOption: null,
     presupuesto_detalle: [],
     programas: [],
+    id_programa_selec: "",
     clas_gasto: [],
     semestres: [],
     cursos: [],
     tipo_unidad: [],
   };
+  this.handleProgramaChange = this.handleProgramaChange.bind(this);
   }
 
-
+  handleProgramaChange(e){
+    this.setState({
+      id_programa_selec: e.target.value
+    });
+    console.log( e.target.value);
+  }
 
   componentDidMount() {
     fetch("https://registropresupuesto.herokuapp.com/programas")
@@ -34,7 +41,7 @@ class CustomRow extends React.Component {
     .then(ga =>{
       this.setState({ semestres: ga })
     });
-    fetch("https://registropresupuesto.herokuapp.com/programas/{id}/cursos")
+    fetch("https://registropresupuesto.herokuapp.com/programas/"+id_programa_selec+"/cursos")
     .then(response => response.json())
     .then(ga =>{
       this.setState({ cursos: ga })
@@ -70,7 +77,7 @@ class CustomRow extends React.Component {
             </select>
           </td>
           <td className="td">
-            <select className="prog" name="prog">
+            <select className="prog" name="prog" onChange={this.handleProgramaChange}>
             {this.state.programas.map(programa => (
                 <option key={programa.id} value={programa.id}>
                   {programa.nombrePrograma}
