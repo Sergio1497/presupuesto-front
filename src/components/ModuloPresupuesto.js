@@ -152,7 +152,7 @@ class TodoForm extends Component {
                   <label className="aper-label"> Resolución Decanal: </label>
                 </strong>
                 <div className="form-group">
-                  <input
+                  <input minlength="5" maxlength="5"
                     type="text"
                     name="resdecanal"
                     className="form-control"
@@ -164,7 +164,7 @@ class TodoForm extends Component {
 
                 <div className="form-group">
                   <div>
-                    <input
+                    <input 
                       type="date"
                       name="fechard"
                       className="form-control"
@@ -180,7 +180,7 @@ class TodoForm extends Component {
                   <label className="aper-label"> Resolución Rectoral: </label>
                 </strong>
                 <div className="form-group">
-                  <input
+                  <input minlength="5" maxlength="5"
                     type="text"
                     name="resrectoral"
                     className="form-control"
