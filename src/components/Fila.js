@@ -12,9 +12,14 @@ class CustomRow extends React.Component {
       clas_gasto: [],
       semestres: [],
       cursos: [],
-      tipo_unidad: []
+      tipo_unidad: [],
+      cant: "",
+      soles: "",
+      total: ""
     };
     this.handleProgramaChange = this.handleProgramaChange.bind(this);
+    this.handleCantChange = this.handleCantChange.bind(this);
+    this.handleSolesChange = this.handleSolesChange.bind(this);
   }
 
   handleProgramaChange(e) {
@@ -23,17 +28,41 @@ class CustomRow extends React.Component {
     });
   }
 
-  componentDidUpdate(prevState){
+  handleCantChange(e) {
+    this.setState({
+      cant: e.target.value
+    });
+    console.log(e.target.value);
+  }
+  handleSolesChange(e) {
+    this.setState({
+      soles: e.target.value
+    });
+    let soles = e.target.value;
+    let cant = this.state.cant;
+    let total = soles * cant;
+    console.log("TOTAL", total);
+    this.setState({
+      total: total
+    });
+
+    // this.total=this.soles*this.total,
+    //  console.log(e.target.value);
+  }
+
+  componentDidUpdate(prevState) {
     // Uso tipico (no olvides de comparar los props):
     //if (this.state.id_programa_selec !== prevProps.tipo_grado) {
-      fetch("https://registropresupuesto.herokuapp.com/programas/" +
-      this.state.id_programa_selec +
-      "/cursos")    
+    fetch(
+      "https://registropresupuesto.herokuapp.com/programas/" +
+        this.state.id_programa_selec +
+        "/cursos"
+    )
       .then(response => response.json())
       .then(ga => {
         this.setState({ cursos: ga });
       });
-     //}
+    //}
   }
 
   componentDidMount() {
@@ -66,7 +95,7 @@ class CustomRow extends React.Component {
       .then(ga => {
         this.setState({ tipo_unidad: ga });
       });
-      fetch("https://registropresupuesto.herokuapp.com/tipogrado")
+    fetch("https://registropresupuesto.herokuapp.com/tipogrado")
       .then(response => response.json())
       .then(ga => {
         this.setState({ tipo_grado: ga });
@@ -88,10 +117,7 @@ class CustomRow extends React.Component {
           <td className="td">
             <select className="clas_gast" name="clas_gast">
               {this.state.clas_gasto.map(clas_gasto => (
-                <option
-                  key={clas_gasto.idCgasto}
-                  value={clas_gasto.idCgasto}
-                >
+                <option key={clas_gasto.idCgasto} value={clas_gasto.idCgasto}>
                   {clas_gasto.cgastoDescripcion}
                 </option>
               ))}
@@ -101,9 +127,7 @@ class CustomRow extends React.Component {
             <select
               className="prog"
               name="prog"
-              value={
-                this.state.id_programa_selec
-              }
+              value={this.state.id_programa_selec}
               onChange={this.handleProgramaChange}
             >
               {this.state.programas.map(programa => (
@@ -141,12 +165,19 @@ class CustomRow extends React.Component {
             </select>
           </td>
           <td>
-            <input className="input-cant" />
+            <input
+              className="input-cant"
+              value={this.state.cant}
+              onChange={this.handleCantChange}
+            />
           </td>
           <td className="td">
             <select className="grad" name="grad">
-            {this.state.cursos.map(tipo_grado => (
-                <option key={tipo_grado.id_tip_grado} value={tipo_grado.id_tip_grado}>
+              {this.state.cursos.map(tipo_grado => (
+                <option
+                  key={tipo_grado.id_tip_grado}
+                  value={tipo_grado.id_tip_grado}
+                >
                   {tipo_grado.nom_tip_grado}
                 </option>
               ))}
@@ -156,11 +187,15 @@ class CustomRow extends React.Component {
             <input className="input-num" />
           </td>
           <td>
-            <input className="input-s" />
+            <input
+              className="input-s"
+              value={this.state.soles}
+              onChange={this.handleSolesChange}
+            />
           </td>
           <td>
             <strong>
-              <input className="input-t" disabled />
+              <input className="input-t" disabled value={this.state.total} />
             </strong>
           </td>
         </tr>
