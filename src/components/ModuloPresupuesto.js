@@ -108,7 +108,7 @@ class TodoForm extends Component {
             <form onSubmit={this.handleSubmit} className="card-body">
               <div className="seccion-aper">
                 <div className="form-group">
-                  <input
+                  <input minlength="4" maxlength="4"
                     type="text"
                     name="anio"
                     className="form-control"
@@ -202,7 +202,7 @@ class TodoForm extends Component {
               </div>
 
               <button
-                //onClick={this.RegistrarPresupuesto}
+                onClick={this.RegistrarPresupuesto}
                 className="btn btn-primary"
                 href=""
               >

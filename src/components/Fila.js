@@ -61,10 +61,15 @@ class CustomRow extends React.Component {
       .then(ga => {
         this.setState({ cursos: ga });
       });
-    fetch("https://registropresupuesto.herokuapp.com/tipo_unidad")
+    fetch("https://registropresupuesto.herokuapp.com/tipounidad")
       .then(response => response.json())
       .then(ga => {
         this.setState({ tipo_unidad: ga });
+      });
+      fetch("https://registropresupuesto.herokuapp.com/tipogrado")
+      .then(response => response.json())
+      .then(ga => {
+        this.setState({ tipo_grado: ga });
       });
     fetch("https://registropresupuesto.herokuapp.com/presupuesto_detalle")
       .then(response => response.json())
@@ -140,12 +145,9 @@ class CustomRow extends React.Component {
           </td>
           <td className="td">
             <select className="grad" name="grad">
-              {this.state.presupuesto_detalle.map(presupuesto_detalle => (
-                <option
-                  key={presupuesto_detalle.id}
-                  value={presupuesto_detalle.id}
-                >
-                  {presupuesto_detalle.gradodocente}
+            {this.state.cursos.map(tipo_grado => (
+                <option key={tipo_grado.id_tip_grado} value={tipo_grado.id_tip_grado}>
+                  {tipo_grado.nom_tip_grado}
                 </option>
               ))}
             </select>
