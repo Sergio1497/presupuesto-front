@@ -34,7 +34,8 @@ class TodoForm extends Component {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(this.state.form)
+          crossdomain: true,  
+          body: JSON.stringify(this.state.form)
         }
         let response = await
         fetch('https://registropresupuesto.herokuapp.com/presupuesto/save',config)
