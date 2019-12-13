@@ -8,7 +8,7 @@ class TodoForm extends Component {
     this.state = {
       list: [],
       text: "",
-      form: { 
+      form: {
         anio: "",
         nconsejo: "",
         fechacon: "",
@@ -16,42 +16,59 @@ class TodoForm extends Component {
         fechard: "",
         resrectoral: "",
         fecharr: ""
-        }
+      }
     };
-   // this.handleInputChange = this.handleInputChange.bind(this);
+    // this.handleInputChange = this.handleInputChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
   }
 
-  
- handleSubmit = async e =>{
-    e.preventDefault();
-    try{
-        let config = {
-            method: 'POST',
-            headers:{
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-          crossdomain: true,  
-          body: JSON.stringify(this.state.form)
+  handleSubmit = async a => {
+    a.preventDefault();
+    this.setState(
+      {
+        form: {
+          ...this.state.form,
+          fechacon: "2019-12-13T21:05:14.815+0000",
+          fechard: "2019-12-13T21:05:14.815+0000",
+          fecharr: "2019-12-13T21:05:14.815+0000"
         }
-        let response = await
-        fetch('https://registropresupuesto.herokuapp.com/presupuesto/save',config)
-        let json = await response.json()
-        console.log(json);
-        swal("Envio exitoso!", "", "success");
-        //ENVIAR A VISTA MODILO PRESUPUESTO
-        browserHistory.push("/vista/moduloPresupuesto");
-        //console.log('After: ',this.state.form);
-        //console.log('paso guardado')
-    }catch( error ){
-        console.log('ERROR..');
-        swal("Oops, Algo salió mal!!", "", "error");
-    }
+      },
+      () => {
+        let config = {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+          crossdomain: true,
+          body: JSON.stringify(this.state.form)
+        };
+        console.log(config.body);
+        try {
+          fetch(
+            "https://registropresupuesto.herokuapp.com/presupuesto/save",
+            config
+          )
+            .then(response => response.json())
+            .then(g => {
+              console.log(g);
+              swal("Envio exitoso!", "", "success");
+              //ENVIAR A VISTA MODILO PRESUPUESTO
+              browserHistory.push("/vista/moduloPresupuesto");
+            });
+          //let json = await response.json();
 
-}
+          //console.log('After: ',this.state.form);
+          //console.log('paso guardado')
+        } catch (error) {
+          console.log(error);
+          swal("Oops, Algo salió mal!!", "", "error");
+        }
+      }
+    );
+  };
   /*handleSubmit(e) {
     e.preventDefault();
     this.props.onAddTodo(this.state);
@@ -76,25 +93,24 @@ class TodoForm extends Component {
     });
   }
 
-  handleFormChange(e){
+  handleFormChange(e) {
     this.setState({
-      form:{
+      form: {
         ...this.state.form,
-      [ e.target.name]: e.target.value        
-      }      
+        [e.target.name]: e.target.value
+      }
     });
+
     console.log(this.state.form.anio);
   }
 
   RegistrarPresupuesto = e => {
-
     browserHistory.push("/vista/registrarPresupuesto");
     // console.log("Vista nueva");
     e.preventDefault();
   };
 
   ModuloPresupuesto = e => {
-    
     // console.log("Vista nueva");
     e.preventDefault();
   };
@@ -109,7 +125,9 @@ class TodoForm extends Component {
             <form onSubmit={this.handleSubmit} className="card-body">
               <div className="seccion-aper">
                 <div className="form-group">
-                  <input minlength="4" maxlength="4"
+                  <input
+                    minLength="4"
+                    maxLength="4"
                     type="text"
                     name="anio"
                     className="form-control"
@@ -153,7 +171,9 @@ class TodoForm extends Component {
                   <label className="aper-label"> Resolución Decanal: </label>
                 </strong>
                 <div className="form-group">
-                  <input minlength="5" maxlength="5"
+                  <input
+                    minLength="5"
+                    maxLength="5"
                     type="text"
                     name="resdecanal"
                     className="form-control"
@@ -165,7 +185,7 @@ class TodoForm extends Component {
 
                 <div className="form-group">
                   <div>
-                    <input 
+                    <input
                       type="date"
                       name="fechard"
                       className="form-control"
@@ -181,7 +201,9 @@ class TodoForm extends Component {
                   <label className="aper-label"> Resolución Rectoral: </label>
                 </strong>
                 <div className="form-group">
-                  <input minlength="5" maxlength="5"
+                  <input
+                    minLength="5"
+                    maxLength="5"
                     type="text"
                     name="resrectoral"
                     className="form-control"
@@ -203,11 +225,18 @@ class TodoForm extends Component {
               </div>
 
               <button
-                onClick={this.RegistrarPresupuesto}
+                //onClick={this.RegistrarPresupuesto}
                 className="btn btn-primary"
                 href=""
               >
                 APERTURAR PRESUPUESTO
+              </button>
+              <button
+                onClick={this.RegistrarPresupuesto}
+                className="btn btn-primary"
+                href=""
+              >
+                SIGUIENTE
               </button>
               <ol>
                 {this.state.list.map((item, index) => {
