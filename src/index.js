@@ -15,7 +15,7 @@ class Index extends React.Component {
         <Route path="/" component={Menu} />
         <Route
           path="/vista/moduloPresupuesto"
-          component={registroPresupuesto}
+          component={moduloPresupuesto}
         />
         <Route path="/vista/Menu" component={Menu} />
         <Route path="/vista/moduloPresupuesto" component={moduloPresupuesto} />
