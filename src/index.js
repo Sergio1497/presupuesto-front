@@ -13,12 +13,12 @@ class Index extends React.Component {
     return (
       <Router history={browserHistory}>
         <Route path="/" component={Menu} />
-        <Route
-          path="/vista/moduloPresupuesto"
-          component={moduloPresupuesto}
-        />
-        <Route path="/vista/Menu" component={Menu} />
         <Route path="/vista/moduloPresupuesto" component={moduloPresupuesto} />
+        <Route path="/vista/Menu" component={Menu} />
+        <Route
+          path="/vista/registrarPresupuesto"
+          component={registroPresupuesto}
+        />
         <Route path="/vista/registrarEgresos" component={registrarEgresos} />
       </Router>
     );
