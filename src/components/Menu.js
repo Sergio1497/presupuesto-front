@@ -38,7 +38,7 @@ class TodoForm extends Component {
             <button
               type="button"
               className="btn-reg btn-primary"
-              onClick={this.RegistrarPresupuesto}
+              onClick={this.ModuloPresupuesto}
             >
               REGISTRAR PRESUPUESTO{" "}
             </button>
