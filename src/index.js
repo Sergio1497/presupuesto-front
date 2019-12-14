@@ -7,6 +7,7 @@ import registroPresupuesto from "./components/RegistrarPresupuesto";
 import Menu from "./components/Menu";
 import moduloPresupuesto from "./components/ModuloPresupuesto";
 import registrarEgresos from "./components/RegistrarEgresos";
+import busqueda from "./components/Busqueda";
 
 class Index extends React.Component {
   render() {
@@ -20,6 +21,7 @@ class Index extends React.Component {
           component={registroPresupuesto}
         />
         <Route path="/vista/registrarEgresos" component={registrarEgresos} />
+        <Route path="/vista/busqueda" component={busqueda} />
       </Router>
     );
   }
