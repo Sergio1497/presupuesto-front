@@ -27,7 +27,7 @@ class TodoForm extends Component {
       <div className="text-center">
         <h3>
           MODULO PRESUPUESTO
-          <button onClick={this.ModuloPresupuesto} className="return" href="">
+          <button onClick={this.moduloPresupuesto} className="return" href="">
             Regresar <TiArrowBack />
           </button>
         </h3>
