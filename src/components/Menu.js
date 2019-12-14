@@ -19,7 +19,11 @@ class TodoForm extends Component {
     e.preventDefault();
   };
 
- 
+  Busqueda = e => {
+    browserHistory.push("/vista/busqueda");
+    // console.log("Vista nueva");
+    e.preventDefault();
+  };
 
   render() {
     return (
@@ -39,7 +43,7 @@ class TodoForm extends Component {
               REGISTRAR PRESUPUESTO{" "}
             </button>
 
-            <button type="button" className="btn-reg btn-primary">
+            <button type="button" className="btn-reg btn-primary" onClick={this.Busqueda}>
               BUSCAR PRESUPUESTO{" "}
             </button>
           </div>
