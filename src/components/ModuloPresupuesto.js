@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { browserHistory } from "react-router-3";
 import swal from "sweetalert";
+import { TiArrowBack } from "react-icons/ti";
 
 class TodoForm extends Component {
+
   constructor() {
     super();
     this.state = {
@@ -115,10 +117,19 @@ class TodoForm extends Component {
     e.preventDefault();
   };
 
+  Menu = e => {
+    browserHistory.push("/vista/Menu");
+    // console.log("Vista nueva");
+    e.preventDefault();
+  };
+
   render() {
     return (
       <div className="text-center">
         <h2>Módulo de Presupuesto</h2>
+        <button onClick={this.Menu} className="return" href="">
+            Regresar <TiArrowBack />
+        </button>
         <hr />
         <div className="container ">
           <div className="card">
