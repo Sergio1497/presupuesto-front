@@ -21,6 +21,12 @@ class TodoForm extends Component {
     e.preventDefault();
   };
   
+  Menu = e => {
+    browserHistory.push("/vista/menu");
+    // console.log("Vista nueva");
+    this.onSubmit2 = this.onSubmit2.bind(this);
+    e.preventDefault();
+  };
 
   RegistrarEgresos = e => {
     browserHistory.push("/vista/registrarEgresos");
