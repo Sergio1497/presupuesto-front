@@ -17,7 +17,7 @@ class CustomRoow extends React.Component {
       n_RR: "",
       fecha_RR: ""
     };
-    this.handlePresupuestoChange = this.handlePresupuestoChange.bind(this);
+   // this.handlePresupuestoChange = this.handlePresupuestoChange.bind(this);
     this.handleCantChange = this.handleCantChange.bind(this);
     this.handleSolesChange = this.handleSolesChange.bind(this);
   }
