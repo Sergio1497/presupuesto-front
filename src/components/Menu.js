@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { browserHistory } from "react-router-3";
-import { TiArrowBack } from "react-icons/ti";
 
 class TodoForm extends Component {
   RegistrarPresupuesto = e => {
@@ -27,9 +26,6 @@ class TodoForm extends Component {
       <div className="text-center">
         <h3>
           MODULO PRESUPUESTO
-          <button onClick={this.moduloPresupuesto} className="return" href="">
-            Regresar <TiArrowBack />
-          </button>
         </h3>
         <hr />
 
