@@ -9,7 +9,7 @@ import swal from "sweetalert";
 
 import { browserHistory } from "react-router-3";
 
-import CustomRow from "./Fila";
+import CustomRoow from "./Filaa";
 
 import TableHeadeer from "./TableHeadeer";
 
@@ -40,7 +40,7 @@ class TodoForm extends Component {
   }
 
   appendRow(event) {
-    var joined = this.state.rows.concat(<CustomRow />);
+    var joined = this.state.rows.concat(<CustomRoow />);
     this.setState({ rows: joined });
   }
 
@@ -66,7 +66,7 @@ class TodoForm extends Component {
         <hr />
         <table className="table-small">
           <TableHeadeer />
-          <CustomRow />
+          <CustomRoow />
           {this.state.rows}
         </table>
 
