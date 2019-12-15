@@ -86,13 +86,6 @@ class TodoForm extends Component {
         </h3>
         <hr />
         <hr />
-        <table className="table-small">
-          <TableHeadeer />
-          <CustomRoow />
-          {this.state.rows}
-        </table>
-
-        <hr />
 
         <div className="first-buttons">
           <div className="btn-group" role="group">
