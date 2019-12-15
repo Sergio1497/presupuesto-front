@@ -1,4 +1,3 @@
-
 import React, { Component, Fragment } from "react";
 import { browserHistory } from "react-router-3";
 import swal from "sweetalert";
@@ -100,20 +99,6 @@ class TodoForm extends Component {
     });
   }
 
-  componentDidMount(){
-
-    fetch('https://registropresupuesto.herokuapp.com/presupuesto')
-      .then((response) => {
-        return response.json()
-      })
-      .then((presupuestos) => {
-        this.setState({ presupuestos: presupuestos })
-        console.log(presupuestos);
-      })
-      .catch( error =>{ console.log(error) 
-      });
-  }
-
   handleFormChange(e) {
     this.setState({
       form: {
@@ -150,6 +135,7 @@ class TodoForm extends Component {
         <button onClick={this.Menu} className="return float-right" href="" >
             Regresar <TiArrowBack />
         </button>
+        <hr/>
         <div className="" style={{paddingLeft: "10px"}}>
           <div className="row" style={{margin: "0px",width: "960!important"}}>
             <div className="col-md-6" style={{width: "400!important"}}>
@@ -284,38 +270,6 @@ class TodoForm extends Component {
                 </form>
               </div>
             </div>
-            <div className="pull-right" style={{width: "400!important"}} >
-              <h4>PRESUPUESTOS</h4>
-              <table className="table table-bordered">
-                <thead className="thead-dark">
-                  <tr>
-                    <th>Año</th>
-                    <th># Consejo</th>
-                    <th>Fecha Consejo</th>
-                    <th># R.D.</th>
-                    <th>Fecha Resolución</th>
-                    <th>RR</th>
-                    <th>Fecha RR</th>
-                  </tr>
-                </thead>
-                <tbody>                
-                 {detalles.map((detalle, i) => {
-                  return (<Fragment key={`fragment_${detalle.id}`}>
-                      <tr key={i}>
-                        <td><center>{detalle.anio}</center></td>
-                        <td><center>{detalle.numconfac}</center></td>
-                        <td><center>{this.changeDate(detalle.fechaCon)}</center></td>
-                        <td><center>{detalle.numrd}</center></td>
-                        <td><center>{this.changeDate(detalle.rdfecha)}</center></td>
-                        <td><center>{detalle.numrr}</center></td>
-                        <td><center>{this.changeDate(detalle.rrfecha)}</center></td>                      
-                      </tr>
-                  </Fragment>)
-                  })}
-                </tbody>
-              </table>
-            </div>
-
           </div> {/*end.row*/}
         </div>
       </div>
